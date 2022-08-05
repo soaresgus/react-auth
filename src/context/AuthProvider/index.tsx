@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { IAuthProvider, IContext, IUser } from './types';
 import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from './util';
 
@@ -10,7 +10,7 @@ export function AuthProvider({ children }: IAuthProvider) {
   useEffect(() => {
     const user = getUserLocalStorage();
 
-    if(user) {
+    if (user) {
       setUser(user);
     }
   }, []);
@@ -34,7 +34,4 @@ export function AuthProvider({ children }: IAuthProvider) {
       {children}
     </AuthContext.Provider>
   );
-}
-function useEffect(arg0: () => void, arg1: never[]) {
-  throw new Error('Function not implemented.');
 }
